@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class AliaMovement : MonoBehaviour
 {
@@ -27,6 +29,9 @@ public class AliaMovement : MonoBehaviour
     float minHeight = .5f;
     float yPos = 0;
 
+    public event EventHandler LandEvent;
+    public event EventHandler TakeoffEvent;
+
     [SerializeField] GameObject takeoffPanel;
 
     private void Start()
@@ -40,6 +45,15 @@ public class AliaMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             landed = !landed;
+
+            if (landed)
+            {
+                LandEvent?.Invoke(this, new EventArgs());
+            }
+            else
+            {
+                TakeoffEvent?.Invoke(this, new EventArgs());
+            }
         }
 
         //Movement Input
