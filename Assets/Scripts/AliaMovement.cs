@@ -11,7 +11,7 @@ public class AliaMovement : MonoBehaviour
     float turn;
 
     //Horizontal Flight
-    [SerializeField] float speed = 2f;
+    [SerializeField] float speed = 1f;
 
     //Pitch and Roll
     float tiltAmount = -10f;
@@ -75,11 +75,11 @@ public class AliaMovement : MonoBehaviour
         //Lerp velocity based on input
         rb.velocity = Vector3.Lerp(rb.velocity, moveDir.normalized * speed, Time.deltaTime);
 
-        //Lerp tilt (pitch, yaw, and roll) rotation based on input------------------------------------------Pitch----------Roll-----------------------------------------------Yaw
-        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler((new Vector3(-tiltDir.x, 0, tiltDir.z).normalized * tiltAmount) + (Vector3.up * ((turn * turnSpeed) + transform.eulerAngles.y))), Time.deltaTime * tiltSpeed);
+        //Lerp tilt (pitch  and roll) rotation based on input-----------------------------------------------Pitch----------Roll--------------------------------Add y rotation back to cancel out change in y
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler((new Vector3(-tiltDir.x, 0, tiltDir.z).normalized * tiltAmount) + (Vector3.up * transform.eulerAngles.y)), Time.deltaTime * tiltSpeed);
 
         //Lerp yaw based on input
         //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y +  turn, transform.eulerAngles.z)), Time.deltaTime * turnSpeed);
-        //transform.Rotate(Vector3.up, turn, Space.World);
+        transform.Rotate(Vector3.up, turn * turnSpeed, Space.World);
     }
 }
