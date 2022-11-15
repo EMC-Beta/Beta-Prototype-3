@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aliaTrans: {fileID: 826260868}
+  rotateSpeed: 3
 --- !u!1 &714334605
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,6 +561,7 @@ MonoBehaviour:
   takeoffSpeed: 1
   takeoffPanel: {fileID: 0}
   flightSpeed: 5
+  leavePitchAmount: -20
 --- !u!54 &826260871
 Rigidbody:
   m_ObjectHideFlags: 0

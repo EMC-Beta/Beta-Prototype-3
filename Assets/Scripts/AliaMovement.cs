@@ -9,7 +9,7 @@ public class AliaMovement : MonoBehaviour
     Rigidbody rb;
 
     float speed;
-    float turnSpeed;
+    float tiltAmount;
     Vector3 moveDir;
     Vector3 tiltDir;
     float turn;
@@ -18,11 +18,11 @@ public class AliaMovement : MonoBehaviour
     [SerializeField] float hoverSpeed = 2f;
 
     //Pitch and Roll
-    float tiltAmount = -10f;
+    float hoverTiltAmount = -10f;
     float tiltSpeed = 5f;
 
     //Yaw
-    [SerializeField] float hoverTurnSpeed = 2f;
+    [SerializeField] float turnSpeed = 2f;
 
     //Takeoff Flight
     [SerializeField] float takeoffSpeed = 1f;
@@ -45,7 +45,7 @@ public class AliaMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         speed = hoverSpeed;
-        turnSpeed = hoverTurnSpeed;
+        tiltAmount = hoverTiltAmount;
     }
 
     private void Update()
