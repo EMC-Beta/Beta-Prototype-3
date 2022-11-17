@@ -27,8 +27,8 @@ public class AliaMovement : MonoBehaviour
     //Takeoff Flight
     [SerializeField] float takeoffSpeed = 1f;
     bool landed = true;
-    float maxHeight = 2;
-    float minHeight = .5f;
+    [SerializeField] float maxHeight = 20;
+    [SerializeField] float minHeight = .5f;
     float yPos = 0;
     [SerializeField] GameObject takeoffPanel;
 
@@ -117,7 +117,8 @@ public class AliaMovement : MonoBehaviour
         }
 
         //Lerp velocity based on input
-        rb.velocity = Vector3.Lerp(rb.velocity, moveDir.normalized * speed, Time.deltaTime);
+        if(moveDir.sqrMagnitude > 0)
+            rb.velocity = Vector3.Lerp(rb.velocity, moveDir.normalized * speed, Time.deltaTime);
 
         //Lerp tilt (pitch  and roll) rotation based on input-----------------------------------------------Pitch----------Roll--------------------------------Add y rotation back to cancel out change in y
         transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler((new Vector3(-tiltDir.x, 0, tiltDir.z).normalized * tiltAmount) + (Vector3.up * transform.eulerAngles.y)), Time.deltaTime * tiltSpeed);
