@@ -618,7 +618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverSpeed: 10
   turnSpeed: 1
-  takeoffSpeed: 1
+  takeoffSpeed: 0.5
   maxHeight: 30
   minHeight: 0.5
   takeoffPanel: {fileID: 0}
@@ -1129,6 +1129,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3024376605982891993, guid: 085b02de6d118604e84ab0eb2b291ffd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3024376605982892004, guid: 085b02de6d118604e84ab0eb2b291ffd, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3024376605982892005, guid: 085b02de6d118604e84ab0eb2b291ffd, type: 3}

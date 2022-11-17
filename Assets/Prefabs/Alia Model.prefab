@@ -124,9 +124,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3024376605982891993}
     m_Modifications:
+    - target: {fileID: 2714734678422315851, guid: a872dac4592219140bca572faea3ad0a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2997589781504413561, guid: a872dac4592219140bca572faea3ad0a, type: 3}
       propertyPath: m_Name
       value: Props
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896101158549101293, guid: a872dac4592219140bca572faea3ad0a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896101158697914443, guid: a872dac4592219140bca572faea3ad0a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896101160045790702, guid: a872dac4592219140bca572faea3ad0a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8972426828525884683, guid: a872dac4592219140bca572faea3ad0a, type: 3}
       propertyPath: m_RootOrder

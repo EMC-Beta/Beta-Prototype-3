@@ -70,10 +70,18 @@ public class AliaMovement : MonoBehaviour
             if (landed)
             {
                 LandEvent?.Invoke(this, new EventArgs());
+                rb.velocity = Vector3.zero;
+                moveDir = Vector3.zero;
+                tiltDir = Vector3.zero;
+                turn = 0;
             }
             else
             {
                 TakeoffEvent?.Invoke(this, new EventArgs());
+                rb.velocity = Vector3.zero;
+                moveDir = Vector3.zero;
+                tiltDir = Vector3.zero;
+                turn = 0;
             }
         }
 
