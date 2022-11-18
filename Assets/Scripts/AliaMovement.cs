@@ -142,6 +142,7 @@ public class AliaMovement : MonoBehaviour
         {
             Debug.Log("Leave");
             leaving = true;
+            turn = 0;   //Disable turning
         }
     }
 }
