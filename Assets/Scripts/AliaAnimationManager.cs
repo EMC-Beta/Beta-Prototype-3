@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class AliaAnimationManager : MonoBehaviour
     [SerializeField] private Animator _propFL;
     [SerializeField] private Animator _propRR;
     [SerializeField] private Animator _propRL;
+    [SerializeField] private AliaMovement _aliaMovement;
 
     [SerializeField] private float speed;
     [SerializeField] private float forwardSpeed;
@@ -23,53 +25,70 @@ public class AliaAnimationManager : MonoBehaviour
     {
         _propFL.SetBool("IsFront", true);
         _propFR.SetBool("IsFront", true);
-        
+
+        _aliaMovement.LandEvent += OnLand;
+        _aliaMovement.TakeoffEvent += OnTakeOff;
+
+    }
+
+    void OnLand(object sender, EventArgs e)
+    {
+        _propFL.SetFloat("Speed", 0);
+        _propFR.SetFloat("Speed", 0);
+        _propRL.SetFloat("Speed", 0);
+        _propRR.SetFloat("Speed", 0);
+    }
+
+    void OnTakeOff(object sender, EventArgs e)
+    {
         _propFL.SetFloat("Speed", speed);
         _propFR.SetFloat("Speed", speed);
         _propRL.SetFloat("Speed", speed);
         _propRR.SetFloat("Speed", speed);
     }
-
+    
     // Update is called once per frame
     void Update()
     {
-        float vertical = Input.GetAxisRaw("Vertical");
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        if(vertical > 0.1)
+        if (!_aliaMovement.IsLanded)
         {
-            _propFL.SetFloat("Speed", forwardSpeed);
-            _propFR.SetFloat("Speed", forwardSpeed);
-            _propRL.SetFloat("Speed", speed);
-            _propRR.SetFloat("Speed", speed);
+            float vertical = Input.GetAxisRaw("Vertical");
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            if(vertical > 0.1)
+            {
+                _propFL.SetFloat("Speed", forwardSpeed);
+                _propFR.SetFloat("Speed", forwardSpeed);
+                _propRL.SetFloat("Speed", speed);
+                _propRR.SetFloat("Speed", speed);
+            }
+            else if (vertical < -0.1)
+            {
+                _propFL.SetFloat("Speed", speed);
+                _propFR.SetFloat("Speed", speed);
+                _propRL.SetFloat("Speed", forwardSpeed);
+                _propRR.SetFloat("Speed", forwardSpeed);
+            }
+            else if(horizontal > 0.1)
+            {
+                _propFL.SetFloat("Speed", speed);
+                _propFR.SetFloat("Speed", forwardSpeed);
+                _propRL.SetFloat("Speed", speed);
+                _propRR.SetFloat("Speed", forwardSpeed);
+            }
+            else if (horizontal < -0.1)
+            {
+                _propFL.SetFloat("Speed", forwardSpeed);
+                _propFR.SetFloat("Speed", speed);
+                _propRL.SetFloat("Speed", forwardSpeed);
+                _propRR.SetFloat("Speed", speed);
+            }
+            else
+            {
+                _propFL.SetFloat("Speed", speed);
+                _propFR.SetFloat("Speed", speed);
+                _propRL.SetFloat("Speed", speed);
+                _propRR.SetFloat("Speed", speed);
+            }
         }
-        else if (vertical < -0.1)
-        {
-            _propFL.SetFloat("Speed", speed);
-            _propFR.SetFloat("Speed", speed);
-            _propRL.SetFloat("Speed", forwardSpeed);
-            _propRR.SetFloat("Speed", forwardSpeed);
-        }
-        else if(horizontal > 0.1)
-        {
-            _propFL.SetFloat("Speed", speed);
-            _propFR.SetFloat("Speed", forwardSpeed);
-            _propRL.SetFloat("Speed", speed);
-            _propRR.SetFloat("Speed", forwardSpeed);
-        }
-        else if (horizontal < -0.1)
-        {
-            _propFL.SetFloat("Speed", forwardSpeed);
-            _propFR.SetFloat("Speed", speed);
-            _propRL.SetFloat("Speed", forwardSpeed);
-            _propRR.SetFloat("Speed", speed);
-        }
-        else
-        {
-            _propFL.SetFloat("Speed", speed);
-            _propFR.SetFloat("Speed", speed);
-            _propRL.SetFloat("Speed", speed);
-            _propRR.SetFloat("Speed", speed);
-        }
-
     }
 }

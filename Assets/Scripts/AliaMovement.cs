@@ -27,6 +27,14 @@ public class AliaMovement : MonoBehaviour
     //Takeoff Flight
     [SerializeField] float takeoffSpeed = 1f;
     bool landed = true;
+
+    public bool IsLanded
+    {
+        get
+        {
+            return landed;
+        }
+    }
     [SerializeField] float maxHeight = 20;
     [SerializeField] float minHeight = .5f;
     float yPos = 0;
