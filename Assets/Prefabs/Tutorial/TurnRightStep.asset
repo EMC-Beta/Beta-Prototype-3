@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170554dd6390ffa4ab2541930c88c5d5, type: 3}
+  m_Name: TurnRightStep
+  m_EditorClassIdentifier: 
+  description: Press 'E' to turn right
+  audio: {fileID: 0}
+  pictograph: {fileID: 21300000, guid: 5c63d3fcc812688438df7e7e496e6b10, type: 3}
+  showAudio: 1
+  holdTime: -0.0016507714

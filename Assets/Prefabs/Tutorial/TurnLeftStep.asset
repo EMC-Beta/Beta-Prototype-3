@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b823aa14914662644be5248974d9be05, type: 3}
+  m_Name: TurnLeftStep
+  m_EditorClassIdentifier: 
+  description: Press 'Q' to turn left
+  audio: {fileID: 0}
+  pictograph: {fileID: 21300000, guid: bfd420d37cb697b43b5c26c7b72e3c86, type: 3}
+  showAudio: 1
+  holdTime: -0.0026411114
