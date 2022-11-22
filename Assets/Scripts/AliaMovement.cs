@@ -129,7 +129,7 @@ public class AliaMovement : MonoBehaviour
         if(!leaving)
         {
             //Slerp to takeoff or landing position
-            transform.position = Vector3.Slerp(transform.position, new Vector3(transform.position.x, yPos, transform.position.z), Time.deltaTime * takeoffSpeed);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, yPos, transform.position.z), Time.deltaTime * takeoffSpeed);
         }
 
         //Lerp velocity based on input
