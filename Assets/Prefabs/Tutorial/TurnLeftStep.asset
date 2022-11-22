@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b823aa14914662644be5248974d9be05, type: 3}
   m_Name: TurnLeftStep
   m_EditorClassIdentifier: 
-  description: Press 'Q' to turn left
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 58f1f0f01f144eb4bb53c54a85a38cba, type: 3}
   pictograph: {fileID: 21300000, guid: bfd420d37cb697b43b5c26c7b72e3c86, type: 3}
   showAudio: 1
-  holdTime: -0.0026411114
+  showProgress: 1
+  localeKey: TurnLeft
+  maxHoldTime: 1
+  holdTime: -0.0034848936

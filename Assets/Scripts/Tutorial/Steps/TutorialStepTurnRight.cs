@@ -14,10 +14,10 @@ public class TutorialStepTurnRight : TutorialStepBase
     {
         holdTime = maxHoldTime;
         //Default text
-        if (description == "")
-        {
-            description = "Press 'E' to turn right";
-        }
+        //if (description == "")
+        //{
+        //    description = "Press 'E' to turn right";
+        //}
     }
 
     public override bool UpdateStep(TutorialManager manager)

@@ -14,10 +14,10 @@ public class TutorialStepRight : TutorialStepBase
     {
         holdTime = maxHoldTime;
         //Default text
-        if (description == "")
-        {
-            description = "Press 'D' to move right";
-        }
+        //if (description == "")
+        //{
+        //    description = "Press 'D' to move right";
+        //}
     }
 
     public override bool UpdateStep(TutorialManager manager)

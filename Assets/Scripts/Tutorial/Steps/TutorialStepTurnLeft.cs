@@ -13,10 +13,10 @@ public class TutorialStepTurnLeft : TutorialStepBase
     {
         holdTime = maxHoldTime;
         //Default text
-        if (description == "")
-        {
-            description = "Press 'Q' to turn left";
-        }
+        //if (description == "")
+        //{
+        //    description = "Press 'Q' to turn left";
+        //}
     }
 
     public override bool UpdateStep(TutorialManager manager)

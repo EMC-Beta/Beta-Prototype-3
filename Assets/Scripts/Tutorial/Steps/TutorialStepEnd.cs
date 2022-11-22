@@ -10,10 +10,10 @@ public class TutorialStepEnd : TutorialStepBase
     public override void StartStep()
     {
         //Default text
-        if (description == "")
-        {
-            description = "Great Job!";
-        }
+        //if (description == "")
+        //{
+        //    description = "Great Job!";
+        //}
     }
 
     public override bool UpdateStep(TutorialManager manager)

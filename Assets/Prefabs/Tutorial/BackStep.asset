@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1112794566f37564780fd9806c243c0f, type: 3}
   m_Name: BackStep
   m_EditorClassIdentifier: 
-  description: Press 'S' to move backward
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 9ff724a8f9988ee47a502ee9e057229d, type: 3}
   pictograph: {fileID: 21300000, guid: 7524db70c9337fc4285b4627c901c861, type: 3}
   showAudio: 1
   showProgress: 1
-  holdTime: -0.0003332072
+  localeKey: MoveBack
+  maxHoldTime: 1
+  holdTime: -0.005543794

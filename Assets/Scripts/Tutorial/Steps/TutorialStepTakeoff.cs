@@ -10,10 +10,10 @@ public class TutorialStepTakeoff : TutorialStepBase
     public override void StartStep()
     {
         //Default text
-        if (description == "")
-        {
-            description = "Press 'Space' to take off!";
-        }
+        //if (description == "")
+        //{
+        //    description = "Press 'Space' to take off!";
+        //}
     }
 
     public override bool UpdateStep(TutorialManager manager)

@@ -4,6 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+using UnityEngine.Localization.Settings;
+
 [CreateAssetMenu(fileName = "BackStep", menuName = "Tutorial/BackStep")]
 public class TutorialStepBack : TutorialStepBase
 {
@@ -14,10 +16,10 @@ public class TutorialStepBack : TutorialStepBase
     {
         holdTime = maxHoldTime;
         //Default text
-        if (description == "")
+        /*if (description == "")
         {
             description = "Press 'S' to move backward";
-        }
+        }*/
     }
 
     public override bool UpdateStep(TutorialManager manager)

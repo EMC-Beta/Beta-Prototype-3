@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36255bb985abdc84bb085da519be8a0f, type: 3}
   m_Name: TakeoffStep
   m_EditorClassIdentifier: 
-  description: 
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 22a39f41b379845418b711e16d5c0cad, type: 3}
   pictograph: {fileID: 21300000, guid: 80ad0d92db1af214f835b1c42034764a, type: 3}
   showAudio: 1
   showProgress: 0
+  localeKey: Takeoff

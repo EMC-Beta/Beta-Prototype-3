@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Components;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
     public AudioSource audioSource;
-    TextMeshProUGUI stepText;
+    LocalizeStringEvent textEvent;      //The component where we can change the key that corresponds to a string in a Locale table
     Image stepImage;
     Slider progressSlider;
 
@@ -17,7 +19,7 @@ public class TutorialManager : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        stepText = transform.Find("DescriptionText").GetComponent<TextMeshProUGUI>();
+        textEvent = transform.Find("DescriptionText").GetComponent<LocalizeStringEvent>();
         stepImage = transform.Find("Pictograph").GetComponent<Image>();
         progressSlider = transform.Find("Progress").GetComponent<Slider>();
         ChangeStep();
@@ -25,7 +27,9 @@ public class TutorialManager : MonoBehaviour
 
     public void PlaySound(AudioClip clip)
     {
-        audioSource.PlayOneShot(clip);
+        audioSource.Stop();
+        audioSource.clip = clip;
+        audioSource.Play();
     }
 
     private void Update()
@@ -60,12 +64,14 @@ public class TutorialManager : MonoBehaviour
         currentStep.StartStep();
 
         //Set description in checklist
-        stepText.text = currentStep.description;
+        //stepText.text = currentStep.description;
+        //textEvent.StringReference = "TutorialTable/" + ;
+        textEvent.SetEntry(currentStep.localeKey);
 
         //Play audio
-        if(currentStep.showAudio)
+        if (currentStep.showAudio)
         {
-            audioSource.PlayOneShot(currentStep.audio);
+            PlaySound(currentStep.audio);
         }
 
         if(currentStep.showProgress)

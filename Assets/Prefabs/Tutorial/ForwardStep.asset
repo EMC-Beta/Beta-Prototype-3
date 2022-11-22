@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303f37f480997dd4ebac5af6b2093bed, type: 3}
   m_Name: ForwardStep
   m_EditorClassIdentifier: 
-  description: Press 'W' to move forward
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 8a43f383ae66f4748bd9dac7c80a1d7b, type: 3}
   pictograph: {fileID: 21300000, guid: eb3f23e8bb0a2aa4cb4a3a22ed7c9afa, type: 3}
   showAudio: 1
-  holdTime: -0.00037604407
+  showProgress: 1
+  localeKey: MoveForward
+  maxHoldTime: 1
+  holdTime: -0.008384755

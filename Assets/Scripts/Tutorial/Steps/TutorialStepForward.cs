@@ -14,10 +14,10 @@ public class TutorialStepForward : TutorialStepBase
     {
         holdTime = maxHoldTime;
         //Default text
-        if (description == "")
-        {
-            description = "Press 'W' to move forward";
-        }
+        //if (description == "")
+        //{
+        //    description = "Press 'W' to move forward";
+        //}
     }
 
     public override bool UpdateStep(TutorialManager manager)

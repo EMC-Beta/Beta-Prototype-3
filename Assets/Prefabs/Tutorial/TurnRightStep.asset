@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170554dd6390ffa4ab2541930c88c5d5, type: 3}
   m_Name: TurnRightStep
   m_EditorClassIdentifier: 
-  description: Press 'E' to turn right
-  audio: {fileID: 0}
+  audio: {fileID: 8300000, guid: 5e7473ba0168b1a4e876192e012882a0, type: 3}
   pictograph: {fileID: 21300000, guid: 5c63d3fcc812688438df7e7e496e6b10, type: 3}
   showAudio: 1
-  holdTime: -0.0016507714
+  showProgress: 1
+  localeKey: TurnRight
+  maxHoldTime: 1
+  holdTime: -0.01862832
