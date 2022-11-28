@@ -1036,6 +1036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reflectDirection: {x: 0, y: 0, z: 0}
   direction: 2
+  maxBarrierGracePeriod: 3
 --- !u!1 &826260864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,6 +1353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reflectDirection: {x: 0, y: 0, z: 0}
   direction: 1
+  maxBarrierGracePeriod: 3
 --- !u!1 &999158634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,6 +1581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reflectDirection: {x: 0, y: 0, z: 0}
   direction: 1
+  maxBarrierGracePeriod: 3
 --- !u!1 &1271830487
 GameObject:
   m_ObjectHideFlags: 3
@@ -1908,6 +1911,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reflectDirection: {x: 0, y: 0, z: 0}
   direction: 2
+  maxBarrierGracePeriod: 3
 --- !u!1 &1471920765
 GameObject:
   m_ObjectHideFlags: 0

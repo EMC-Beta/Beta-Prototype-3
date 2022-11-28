@@ -145,11 +145,21 @@ public class AliaMovement : MonoBehaviour
     {
         if (other.TryGetComponent<Boundary>(out Boundary otherBoundary))
         {
-            turn = 0;
-            moveDir = otherBoundary.boundaryDirection;
-            tiltDir = (transform.forward * moveDir.x) + (transform.right * moveDir.z);
-            //tiltDir = new Vector3(moveDir.z, 0, moveDir.x);
-            barrierCollide = true;
+            //We want to wait a little before pushing the player back
+            //Otherwise, if they have low velocity, the trigger acts like a hard collider
+            float time = otherBoundary.GetBarrierGracePeriod();
+            if (time <= 0)
+            {
+                turn = 0;
+                moveDir = otherBoundary.BoundaryDirection;
+                tiltDir = (transform.forward * moveDir.x) + (transform.right * moveDir.z);
+                //tiltDir = new Vector3(moveDir.z, 0, moveDir.x);
+                barrierCollide = true;
+            }
+            else
+            {
+                otherBoundary.SetBarrierGracePeriod(time - Time.deltaTime);
+            }
         }
     }
 
@@ -158,6 +168,8 @@ public class AliaMovement : MonoBehaviour
         if (other.TryGetComponent<Boundary>(out Boundary otherBoundary))
         {
             barrierCollide = false;
+            //Reset timer
+            otherBoundary.SetBarrierGracePeriod(otherBoundary.MaxBarrierGracePeriod);
         }
     }
 }
