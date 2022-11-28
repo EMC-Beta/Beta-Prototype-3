@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36255bb985abdc84bb085da519be8a0f, type: 3}
+  m_Script: {fileID: 11500000, guid: f3632496cdff69b4baacb0ce11bb7365, type: 3}
   m_Name: TakeoffStep
   m_EditorClassIdentifier: 
   audio: {fileID: 8300000, guid: 22a39f41b379845418b711e16d5c0cad, type: 3}
@@ -17,3 +17,7 @@ MonoBehaviour:
   showAudio: 1
   showProgress: 0
   localeKey: Takeoff
+  maxHoldTime: 1
+  holdTime: 1
+  holdKey: 0
+  key: 32

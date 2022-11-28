@@ -8,6 +8,7 @@ using UnityEngine.Localization.Settings;
 
 public abstract class TutorialStepBase : ScriptableObject
 {
+    [Header("General")]
     //public string description = ""; //Text to put on checklist
     public AudioClip audio;         //Audio to play at this step
     public Sprite pictograph;       //Image to display

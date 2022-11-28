@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1112794566f37564780fd9806c243c0f, type: 3}
+  m_Script: {fileID: 11500000, guid: f3632496cdff69b4baacb0ce11bb7365, type: 3}
   m_Name: BackStep
   m_EditorClassIdentifier: 
   audio: {fileID: 8300000, guid: 9ff724a8f9988ee47a502ee9e057229d, type: 3}
@@ -18,4 +18,6 @@ MonoBehaviour:
   showProgress: 1
   localeKey: MoveBack
   maxHoldTime: 1
-  holdTime: -0.005543794
+  holdTime: -0.0032372102
+  holdKey: 1
+  key: 115

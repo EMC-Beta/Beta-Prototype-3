@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b82ec5656aafbfb4087db22e3363dd0f, type: 3}
+  m_Script: {fileID: 11500000, guid: f3632496cdff69b4baacb0ce11bb7365, type: 3}
   m_Name: LeftStep
   m_EditorClassIdentifier: 
   audio: {fileID: 8300000, guid: 859fa965bc725b546be9ea971b2c7bb1, type: 3}
@@ -18,4 +18,6 @@ MonoBehaviour:
   showProgress: 1
   localeKey: MoveLeft
   maxHoldTime: 1
-  holdTime: -0.018232891
+  holdTime: -0.011789659
+  holdKey: 1
+  key: 97
