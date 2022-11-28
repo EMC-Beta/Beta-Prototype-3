@@ -936,9 +936,10 @@ GameObject:
   - component: {fileID: 798908427}
   - component: {fileID: 798908426}
   - component: {fileID: 798908425}
+  - component: {fileID: 798908429}
   m_Layer: 0
-  m_Name: LeaveTrigger (2)
-  m_TagString: Leave
+  m_Name: BarrierTrigger (2)
+  m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1021,6 +1022,20 @@ Transform:
   m_Father: {fileID: 595869904}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &798908429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798908424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e8989f47d73934f92fd37beb122569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reflectDirection: {x: 0, y: 0, z: 0}
+  direction: 2
 --- !u!1 &826260864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1237,9 +1252,10 @@ GameObject:
   - component: {fileID: 997643379}
   - component: {fileID: 997643378}
   - component: {fileID: 997643377}
+  - component: {fileID: 997643381}
   m_Layer: 0
-  m_Name: LeaveTrigger (3)
-  m_TagString: Leave
+  m_Name: BarrierTrigger (3)
+  m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1322,6 +1338,20 @@ Transform:
   m_Father: {fileID: 595869904}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &997643381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997643376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e8989f47d73934f92fd37beb122569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reflectDirection: {x: 0, y: 0, z: 0}
+  direction: 1
 --- !u!1 &999158634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,9 +1479,10 @@ GameObject:
   - component: {fileID: 1265867541}
   - component: {fileID: 1265867540}
   - component: {fileID: 1265867539}
+  - component: {fileID: 1265867543}
   m_Layer: 0
-  m_Name: LeaveTrigger (1)
-  m_TagString: Leave
+  m_Name: BarrierTrigger (1)
+  m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1534,6 +1565,20 @@ Transform:
   m_Father: {fileID: 595869904}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1265867543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265867538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e8989f47d73934f92fd37beb122569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reflectDirection: {x: 0, y: 0, z: 0}
+  direction: 1
 --- !u!1 &1271830487
 GameObject:
   m_ObjectHideFlags: 3
@@ -1763,9 +1808,10 @@ GameObject:
   - component: {fileID: 1464784816}
   - component: {fileID: 1464784815}
   - component: {fileID: 1464784814}
+  - component: {fileID: 1464784818}
   m_Layer: 0
-  m_Name: LeaveTrigger
-  m_TagString: Leave
+  m_Name: BarrierTrigger
+  m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1848,6 +1894,20 @@ Transform:
   m_Father: {fileID: 595869904}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1464784818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464784813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e8989f47d73934f92fd37beb122569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reflectDirection: {x: 0, y: 0, z: 0}
+  direction: 2
 --- !u!1 &1471920765
 GameObject:
   m_ObjectHideFlags: 0
