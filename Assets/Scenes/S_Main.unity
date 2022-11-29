@@ -1682,6 +1682,10 @@ PrefabInstance:
       value: Prop RL
       objectReference: {fileID: 0}
     - target: {fileID: 2213877701719978440, guid: 085b02de6d118604e84ab0eb2b291ffd, type: 3}
+      propertyPath: slowSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2213877701719978440, guid: 085b02de6d118604e84ab0eb2b291ffd, type: 3}
       propertyPath: _aliaMovement
       value: 
       objectReference: {fileID: 826260870}
