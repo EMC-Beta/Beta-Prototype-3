@@ -27,6 +27,14 @@ public class AliaMovement : MonoBehaviour
     //Takeoff Flight
     [SerializeField] float takeoffSpeed = 1f;
     bool landed = true;
+
+    public bool IsLanded
+    {
+        get
+        {
+            return landed;
+        }
+    }
     [SerializeField] float maxHeight = 20;
     [SerializeField] float minHeight = .5f;
     float yPos = 0;
@@ -39,7 +47,9 @@ public class AliaMovement : MonoBehaviour
     [SerializeField] float flightSpeed = 5f;
     [SerializeField] float leavePitchAmount = -20f;
     float pitchAmount = -20f;
-    bool leaving = false;
+    //bool leaving = false;
+
+    bool barrierCollide = false;
 
     private void Start()
     {
@@ -50,13 +60,9 @@ public class AliaMovement : MonoBehaviour
 
     private void Update()
     {
-        if(!leaving)
+        if(!barrierCollide)
         {
             GetInput();
-        }
-        else
-        {
-            Leave();
         }
     }
 
@@ -70,10 +76,18 @@ public class AliaMovement : MonoBehaviour
             if (landed)
             {
                 LandEvent?.Invoke(this, new EventArgs());
+                rb.velocity = Vector3.zero;
+                moveDir = Vector3.zero;
+                tiltDir = Vector3.zero;
+                turn = 0;
             }
             else
             {
                 TakeoffEvent?.Invoke(this, new EventArgs());
+                rb.velocity = Vector3.zero;
+                moveDir = Vector3.zero;
+                tiltDir = Vector3.zero;
+                turn = 0;
             }
         }
 
@@ -90,14 +104,6 @@ public class AliaMovement : MonoBehaviour
         }
     }
 
-    void Leave()
-    {
-        tiltDir = -Vector3.right;
-        tiltAmount = leavePitchAmount;
-        moveDir = transform.forward;
-        speed = flightSpeed;
-    }
-
     private void FixedUpdate()
     {
         //Set target y position for takeoff and landing
@@ -110,30 +116,60 @@ public class AliaMovement : MonoBehaviour
             yPos = maxHeight;
         }
 
-        if(!leaving)
-        {
-            //Slerp to takeoff or landing position
-            transform.position = Vector3.Slerp(transform.position, new Vector3(transform.position.x, yPos, transform.position.z), Time.deltaTime * takeoffSpeed);
-        }
+        //Lerp to takeoff or landing position
+        transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, yPos, transform.position.z), Time.deltaTime * takeoffSpeed);
 
         //Lerp velocity based on input
         if(moveDir.sqrMagnitude > 0)
             rb.velocity = Vector3.Lerp(rb.velocity, moveDir.normalized * speed, Time.deltaTime);
 
-        //Lerp tilt (pitch  and roll) rotation based on input-----------------------------------------------Pitch----------Roll--------------------------------Add y rotation back to cancel out change in y
-        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler((new Vector3(-tiltDir.x, 0, tiltDir.z).normalized * tiltAmount) + (Vector3.up * transform.eulerAngles.y)), Time.deltaTime * tiltSpeed);
+        if(!barrierCollide)
+        {
+            //Lerp tilt (pitch  and roll) rotation based on input-----------------------------------------------Pitch----------Roll--------------------------------Add y rotation back to cancel out change in y
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler((new Vector3(-tiltDir.x, 0, tiltDir.z).normalized * tiltAmount) + (Vector3.up * transform.eulerAngles.y)), Time.deltaTime * tiltSpeed);
+        }
+        //If tilting away from barrier, use world space rotation so it tilts back (away) when moving forward into barrier or right (also away) when moving left into barrier for example
+        else
+        {
+            //Lerp tilt (pitch  and roll) rotation based on barrier's move direction
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler((new Vector3(-tiltDir.x, 0, tiltDir.z).normalized * tiltAmount) + (Vector3.up * transform.eulerAngles.y)), Time.deltaTime * tiltSpeed);
+        }
+        
 
         //Lerp yaw based on input
         //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y +  turn, transform.eulerAngles.z)), Time.deltaTime * turnSpeed);
         transform.Rotate(Vector3.up, turn * turnSpeed, Space.World);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Leave")
+        if (other.TryGetComponent<Boundary>(out Boundary otherBoundary))
         {
-            Debug.Log("Leave");
-            leaving = true;
+            //We want to wait a little before pushing the player back
+            //Otherwise, if they have low velocity, the trigger acts like a hard collider
+            float time = otherBoundary.GetBarrierGracePeriod();
+            if (time <= 0)
+            {
+                turn = 0;
+                moveDir = otherBoundary.BoundaryDirection;
+                tiltDir = (transform.forward * moveDir.x) + (transform.right * moveDir.z);
+                //tiltDir = new Vector3(moveDir.z, 0, moveDir.x);
+                barrierCollide = true;
+            }
+            else
+            {
+                otherBoundary.SetBarrierGracePeriod(time - Time.deltaTime);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent<Boundary>(out Boundary otherBoundary))
+        {
+            barrierCollide = false;
+            //Reset timer
+            otherBoundary.SetBarrierGracePeriod(otherBoundary.MaxBarrierGracePeriod);
         }
     }
 }
