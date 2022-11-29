@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3632496cdff69b4baacb0ce11bb7365, type: 3}
+  m_Name: BackStep
+  m_EditorClassIdentifier: 
+  audio: {fileID: 8300000, guid: 9ff724a8f9988ee47a502ee9e057229d, type: 3}
+  pictograph: {fileID: 21300000, guid: 7524db70c9337fc4285b4627c901c861, type: 3}
+  showAudio: 1
+  showProgress: 1
+  localeKey: MoveBack
+  maxHoldTime: 1
+  holdTime: -0.0032372102
+  holdKey: 1
+  key: 115
