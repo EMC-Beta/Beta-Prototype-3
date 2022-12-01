@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PathCreation.Examples;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Playables;
 
 public class AliaMovement : MonoBehaviour
 {
@@ -51,6 +53,10 @@ public class AliaMovement : MonoBehaviour
 
     bool barrierCollide = false;
 
+    [SerializeField] private PlayableDirector transitTimeline;
+    [SerializeField] private PathFollower pathFollower;
+    [SerializeField] private GameObject wallsGameObject;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -71,26 +77,21 @@ public class AliaMovement : MonoBehaviour
         //Landing Input
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            landed = !landed;
-
             if (landed)
             {
-                LandEvent?.Invoke(this, new EventArgs());
-                rb.velocity = Vector3.zero;
-                moveDir = Vector3.zero;
-                tiltDir = Vector3.zero;
-                turn = 0;
+                TakeOff();
             }
             else
             {
-                TakeoffEvent?.Invoke(this, new EventArgs());
-                rb.velocity = Vector3.zero;
-                moveDir = Vector3.zero;
-                tiltDir = Vector3.zero;
-                turn = 0;
+                Land();
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            TransitionToTransit();
+        }
+        
         //Movement Input
         moveDir = Vector3.zero;
         turn = 0;
@@ -102,6 +103,26 @@ public class AliaMovement : MonoBehaviour
 
             turn = Input.GetAxisRaw("Turn");
         }
+    }
+
+    public void Land()
+    {
+        landed = true;
+        TakeoffEvent?.Invoke(this, new EventArgs());
+        rb.velocity = Vector3.zero;
+        moveDir = Vector3.zero;
+        tiltDir = Vector3.zero;
+        turn = 0;
+    }
+
+    public void TakeOff()
+    {
+        landed = false;
+        LandEvent?.Invoke(this, new EventArgs());
+        rb.velocity = Vector3.zero;
+        moveDir = Vector3.zero;
+        tiltDir = Vector3.zero;
+        turn = 0;
     }
 
     private void FixedUpdate()
@@ -171,5 +192,14 @@ public class AliaMovement : MonoBehaviour
             //Reset timer
             otherBoundary.SetBarrierGracePeriod(otherBoundary.MaxBarrierGracePeriod);
         }
+    }
+
+    public void TransitionToTransit()
+    {
+        pathFollower.enabled = true;
+        pathFollower.transform.parent.transform.parent = null;
+        pathFollower.pathCreator.transform.parent = null;
+        transitTimeline.Play();
+        wallsGameObject.SetActive(false);
     }
 }
