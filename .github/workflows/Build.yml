@@ -25,9 +25,17 @@ jobs:
     steps:
       # Checkout
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         with:
           lfs: true
+          
+      - name: Checkout web repo
+        uses: actions/checkout@v2
+        with:
+          path: Website
+          repository: EMC-Beta/Beta-dev-web-app
+          lfs: true
+          token: ${{ secrets.GHA_TOKEN }}    
 
       # Cache
       - uses: actions/cache@v2
@@ -47,20 +55,9 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: WebGL
-          buildName: latest
-          buildsPath: build/
+          buildsPath: Webstie/public/beta-app/prototype-3/
           
-       # Checkout
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          path: Website
-          repository: EMC-Beta/Beta-dev-web-app
-          lfs: true
-          token: ${{ secrets.GHA_TOKEN }}
-          
-      - name: Move Folder
-        run: "sudo mv build/latest Website/public/beta-app/prototype-3/"
+               # Checkout
           
       - name: Add & Commit
         uses: EndBug/add-and-commit@v9.1.1
