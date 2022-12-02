@@ -23,6 +23,15 @@ jobs:
     name: Build my project to WebGL ✨
     runs-on: ubuntu-latest
     steps:
+      - name: Make Dir
+        run: "mkdir build"
+        
+      - name: Make Dir
+        run: "mkdir build1"
+        
+      - name: Move Folder
+        run: "sudo mv build build1"
+    
       # Checkout
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -48,7 +57,7 @@ jobs:
         with:
           targetPlatform: WebGL
           buildName: latest
-          buildsPath: /build/
+          buildsPath: build/
           versioning: Semantic
           
        # Checkout
@@ -61,7 +70,7 @@ jobs:
           token: ${{ secrets.GHA_TOKEN }}
           
       - name: Move Folder
-        run: "sudo mv /build/latest Website/public/beta-app/prototype-3/"
+        run: "sudo mv build/latest Website/public/beta-app/prototype-3/"
           
       - name: Add & Commit
         uses: EndBug/add-and-commit@v9.1.1
