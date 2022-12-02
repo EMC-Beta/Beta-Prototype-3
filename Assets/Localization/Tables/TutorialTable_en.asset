@@ -23,31 +23,35 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 461261045760
-    m_Localized: Press "W" to move forward
+    m_Localized: Press "W" to pitch forward
     m_Metadata:
       m_Items: []
   - m_Id: 777100525568
-    m_Localized: Press "S" to move backward
+    m_Localized: Press "S" to pitch backward
     m_Metadata:
       m_Items: []
   - m_Id: 901931401216
-    m_Localized: Press "A" to move left
+    m_Localized: Press "A" to roll left
     m_Metadata:
       m_Items: []
   - m_Id: 1009347526656
-    m_Localized: Press "D" to move right
+    m_Localized: Press "D" to roll right
     m_Metadata:
       m_Items: []
   - m_Id: 1098107387904
-    m_Localized: Press "Q" to turn left
+    m_Localized: Press "Q" to yaw left
     m_Metadata:
       m_Items: []
   - m_Id: 1202868518912
-    m_Localized: Press "E" to turn right
+    m_Localized: Press "E" to yaw right
     m_Metadata:
       m_Items: []
   - m_Id: 1325254115328
     m_Localized: Good Job!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3711550232432640
+    m_Localized: Press "T" to enter cruise mode
     m_Metadata:
       m_Items: []
   references:

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3632496cdff69b4baacb0ce11bb7365, type: 3}
   m_Name: ForwardStep
   m_EditorClassIdentifier: 
-  audio: {fileID: 8300000, guid: 8a43f383ae66f4748bd9dac7c80a1d7b, type: 3}
-  pictograph: {fileID: 21300000, guid: eb3f23e8bb0a2aa4cb4a3a22ed7c9afa, type: 3}
+  audio: {fileID: 0}
+  pictograph: {fileID: 21300000, guid: 5ef6856bb533fbc4abd4cdad8f31aa48, type: 3}
   showAudio: 1
   showProgress: 1
   localeKey: MoveForward
   maxHoldTime: 1
-  holdTime: -0.00036499882
+  holdTime: -0.0013352388
   holdKey: 1
   key: 119

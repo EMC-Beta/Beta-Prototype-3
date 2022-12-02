@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3632496cdff69b4baacb0ce11bb7365, type: 3}
   m_Name: TurnLeftStep
   m_EditorClassIdentifier: 
-  audio: {fileID: 8300000, guid: 58f1f0f01f144eb4bb53c54a85a38cba, type: 3}
-  pictograph: {fileID: 21300000, guid: bfd420d37cb697b43b5c26c7b72e3c86, type: 3}
+  audio: {fileID: 0}
+  pictograph: {fileID: 21300000, guid: 95c1b4b18db2193438c379f32bef527a, type: 3}
   showAudio: 1
   showProgress: 1
   localeKey: TurnLeft
   maxHoldTime: 1
-  holdTime: 1
+  holdTime: -0.000179864
   holdKey: 1
   key: 113
