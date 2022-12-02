@@ -27,6 +27,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
+          path: build
           lfs: true
           
       - name: Checkout web repo
@@ -54,6 +55,7 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
+          projectPath: build/
           targetPlatform: WebGL
           buildsPath: Website/public/beta-app/prototype-3/
           
