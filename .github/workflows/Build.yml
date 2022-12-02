@@ -23,15 +23,6 @@ jobs:
     name: Build my project to WebGL ✨
     runs-on: ubuntu-latest
     steps:
-      - name: Make Dir
-        run: "mkdir build"
-        
-      - name: Make Dir
-        run: "mkdir build1"
-        
-      - name: Move Folder
-        run: "sudo mv build build1"
-    
       # Checkout
       - name: Checkout repository
         uses: actions/checkout@v3
