@@ -25,7 +25,7 @@ jobs:
     steps:
       # Checkout
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           lfs: true
 
@@ -47,18 +47,24 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: WebGL
-          buildsPath: public/beta-app/prototype-3/
+          buildName: latest
+          buildsPath: /build/
+          versioning: Semantic
           
-               # Checkout
+       # Checkout
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: Website
           repository: EMC-Beta/Beta-dev-web-app
           lfs: true
           token: ${{ secrets.GHA_TOKEN }}
           
+      - name: Move Folder
+        run: "sudo mv /build/latest Website/public/beta-app/prototype-3/"
+          
       - name: Add & Commit
         uses: EndBug/add-and-commit@v9.1.1
         with:
+          cwd: './Website/'
           message: "Adding build [Add build version]"
