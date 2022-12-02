@@ -23,31 +23,35 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 461261045760
-    m_Localized: Presiona "W" para avanzar
+    m_Localized: Presiona "W" para lanzar hacia adelante
     m_Metadata:
       m_Items: []
   - m_Id: 777100525568
-    m_Localized: Presiona "S" para retroceder
+    m_Localized: "Presiona \"S\" para lanzar hacia atr\xE1s"
     m_Metadata:
       m_Items: []
   - m_Id: 901931401216
-    m_Localized: Presiona "A" para moverte a la izquierda
+    m_Localized: Presiona "A" para rodar a la izquierda
     m_Metadata:
       m_Items: []
   - m_Id: 1009347526656
-    m_Localized: Presiona "D" para moverte a la derecha
+    m_Localized: Presiona "D" para rodar a la derecha
     m_Metadata:
       m_Items: []
   - m_Id: 1098107387904
-    m_Localized: Presione "Q" para girar a la izquierda
+    m_Localized: "Presione \"Q\" para gui\xF1ar a la izquierda"
     m_Metadata:
       m_Items: []
   - m_Id: 1202868518912
-    m_Localized: Presione "E" para girar a la derecha
+    m_Localized: "Presione \"E\" para gui\xF1ar a la derecha"
     m_Metadata:
       m_Items: []
   - m_Id: 1325254115328
     m_Localized: "\xA1Buen trabajo!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3711550232432640
+    m_Localized: Presiona "T" para ingresar al modo crucero
     m_Metadata:
       m_Items: []
   references:

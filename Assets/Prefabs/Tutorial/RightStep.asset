@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3632496cdff69b4baacb0ce11bb7365, type: 3}
   m_Name: RightStep
   m_EditorClassIdentifier: 
-  audio: {fileID: 8300000, guid: 584933bfccf86b144b9c7237cfd42792, type: 3}
-  pictograph: {fileID: 21300000, guid: cae31891a1ded5541ba6c7c6fc74834e, type: 3}
+  audio: {fileID: 0}
+  pictograph: {fileID: 21300000, guid: 2aef01c8825c9444c817c11e46676376, type: 3}
   showAudio: 1
   showProgress: 1
   localeKey: MoveRight
   maxHoldTime: 1
-  holdTime: 1
+  holdTime: -0.0017160149
   holdKey: 1
   key: 100

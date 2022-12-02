@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3632496cdff69b4baacb0ce11bb7365, type: 3}
   m_Name: TakeoffStep
   m_EditorClassIdentifier: 
-  audio: {fileID: 8300000, guid: 22a39f41b379845418b711e16d5c0cad, type: 3}
+  audio: {fileID: 0}
   pictograph: {fileID: 21300000, guid: 80ad0d92db1af214f835b1c42034764a, type: 3}
   showAudio: 1
   showProgress: 0

@@ -31,23 +31,27 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 901931401216
-    m_Localized: "Appuyez sur \"A\" pour aller \xE0 gauche"
+    m_Localized: "Appuyez sur \"A\" pour rouler \xE0 gauche"
     m_Metadata:
       m_Items: []
   - m_Id: 1009347526656
-    m_Localized: "Appuyez sur \"D\" pour aller \xE0 droite"
+    m_Localized: "Appuyez sur \"D\" pour rouler \xE0 droite"
     m_Metadata:
       m_Items: []
   - m_Id: 1098107387904
-    m_Localized: "Appuyez sur \"Q\" pour tourner \xE0 gauche"
+    m_Localized: Appuyez sur "Q" pour lacet vers la gauche
     m_Metadata:
       m_Items: []
   - m_Id: 1202868518912
-    m_Localized: "Appuyez sur \"E\" pour tourner \xE0 droite"
+    m_Localized: Appuyez sur "E" pour lacet vers la droite
     m_Metadata:
       m_Items: []
   - m_Id: 1325254115328
     m_Localized: Bon travail!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3711550232432640
+    m_Localized: "\rAppuyez sur \"T\" pour entrer en mode croisi\xE8re"
     m_Metadata:
       m_Items: []
   references:

@@ -28,7 +28,9 @@ public class AliaMovement : MonoBehaviour
 
     //Takeoff Flight
     [SerializeField] float takeoffSpeed = 1f;
-    bool landed = true;
+
+    //Controls whether ALIA takes off as soon as the game loads or if it starts landed and the player has to press space first
+    [SerializeField] bool landed = true;
 
     public bool IsLanded
     {
@@ -77,14 +79,14 @@ public class AliaMovement : MonoBehaviour
         //Landing Input
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (landed)
-            {
-                TakeOff();
-            }
-            else
-            {
-                Land();
-            }
+            //if (landed)
+            //{
+            //    TakeOff();
+            //}
+            //else
+            //{
+            //    Land();
+            //}
         }
 
         if (Input.GetKeyDown(KeyCode.T))
