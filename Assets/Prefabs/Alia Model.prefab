@@ -117,7 +117,10 @@ MonoBehaviour:
   _propRL: {fileID: 7217795672511738979}
   _aliaMovement: {fileID: 0}
   speed: 4
+  slowSpeed: 1
   forwardSpeed: 2
+  mediumSpeed: 3
+  inputThreshold: 0.1
 --- !u!1001 &7641144497859615532
 PrefabInstance:
   m_ObjectHideFlags: 0
