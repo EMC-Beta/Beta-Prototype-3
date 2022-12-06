@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 [ExecuteInEditMode, ImageEffectAllowedInSceneView]
@@ -6,8 +7,13 @@ public class ImageViewEffect : MonoBehaviour
 {
     public Shader shader;
     public Transform container;
-    public Material noise;
     Material material;
+
+    [SerializeField] float3 CloudOffset; //Allows for scrolling of clouds
+    [SerializeField] float CloudScale = 70;   //Changes size of clouds
+    [SerializeField][Range(0, 1.0f)]float DensityThreshold = .5f; //Controls how high the noise has to be to draw a cloud, if too low, space will be empty
+    [SerializeField] float DensityMultiplier = 5;    //Increases density of clouds
+    [SerializeField] int NumSteps = 100;
 
     [ImageEffectOpaque]
     //When image is rendered to screen, we change it with this function, the screen is just a render texture
@@ -32,9 +38,19 @@ public class ImageViewEffect : MonoBehaviour
             material = new Material(shader);
         }
 
+        WorleyNoiseGenerator noise = FindObjectOfType<WorleyNoiseGenerator>();
+        noise.Generate();
+
         material.SetVector("BoundsMin", container.position - container.localScale / 2);
         material.SetVector("BoundsMax", container.position + container.localScale / 2);
-        material.SetTexture("ShapeNoise", noise.GetTexture("_MainTex"));
+        material.SetTexture("ShapeNoise", noise.noiseTexture);
+
+        //material.SetVector("CloudOffset", CloudOffset);
+        material.SetInt("NumSteps", NumSteps);
+        material.SetFloat("CloudScale", CloudScale);
+        material.SetFloat("DensityMultiplier", DensityMultiplier);
+        material.SetFloat("DensityThreshold", DensityThreshold);
+
 
         //Blit sets _MainTex on material to source texture, sets render target to destination texture, and draws full-screen quad
         //Allows us to modify source then copy it to destination

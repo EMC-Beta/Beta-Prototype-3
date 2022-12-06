@@ -89,7 +89,7 @@ Shader "Hidden/CloudShader"
             {
                 //Sample main texture color
                 float4 col = tex2D(_MainTex, input.uv);
-                
+
                 //Get position of camera in world space
                 float3 rayOrigin = _WorldSpaceCameraPos;
                 //Direction of ray is same as viewVector, like (eyePosition - lookAtPosition) or transform.forward of camera
