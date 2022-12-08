@@ -57,14 +57,14 @@ Shader "Hidden/CloudShader"
             float3 BoundsMin;
             float3 BoundsMax;
             float3 CloudOffset; //Allows for scrolling of clouds
-            float CloudScale;   //Changes size of clouds
+            float3 CloudScale;   //Changes size of clouds
             float DensityThreshold; //Controls how high the noise has to be to draw a cloud, if too low, space will be empty
             float DensityMultiplier;    //Increases density of clouds
             int NumSteps;
 
             float sampleDensity(float3 position)
             {
-                float3 uvw = position * CloudScale * 0.001 + CloudOffset * 0.01;
+                float3 uvw = float3(position.x * CloudScale.x, position.y * CloudScale.y, position.z * CloudScale.z) * 0.001 + CloudOffset * 0.01;
                 float4 shape = ShapeNoise.SampleLevel(samplerShapeNoise, uvw, 0);
                 float density = max(0, shape.r - DensityThreshold) * DensityMultiplier;
                 return density;
@@ -119,12 +119,21 @@ Shader "Hidden/CloudShader"
 
                 float transmittance = exp(-totalDensity);   //As cloud density increases, light makes it through exponentially less
 
+                if(transmittance < 1)
+                {
+                    float increase = lerp(.4f, 0, transmittance);
+                    col.a = .5f;
+                    return col * transmittance + float4(increase, increase, increase, 0);
+                }
+
                 //If distance to inside of box is more than 0 (point is not behind or right on top of us) and distance to box less than depth of objects (box point is not behind an object)
                 //bool rayHitBox = distInsideBox > 0 && distToBox < depth;
                 //if (rayHitBox)
                 //{
                 //    col = 0;
                 //}
+
+
 
                 return col * transmittance;
             }

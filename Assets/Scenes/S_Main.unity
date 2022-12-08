@@ -376,7 +376,7 @@ Transform:
   m_GameObject: {fileID: 253907492}
   m_LocalRotation: {x: 0.20103633, y: 0, z: 0, w: 0.9795838}
   m_LocalPosition: {x: 0, y: 9.99, z: -20}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -430,14 +430,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 4cffae1ffc1d6274cbcf5eba650f1241, type: 3}
   container: {fileID: 1522282296}
-  CloudOffset:
-    x: 0
-    y: 0
-    z: 0
-  CloudScale: 59.62
+  CloudOffset: {x: 113.989395, y: 0, z: 113.989395}
+  CloudScaleMultiplier: 5.73
+  CloudDeform: {x: 1, y: 2, z: 1.5}
   DensityThreshold: 0.33
-  DensityMultiplier: 1.21
+  DensityMultiplier: 0.26
   NumSteps: 50
+  scrollSpeed: 1
 --- !u!1 &266075174
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,43 +972,6 @@ Transform:
   m_Father: {fileID: 1282421507}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &480500157
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: _NoiseMap
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 5
-  m_Width: 128
-  m_Height: 128
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 0
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 0
-    m_WrapV: 0
-    m_WrapW: 0
-  m_Dimension: 3
-  m_VolumeDepth: 128
-  m_ShadowSamplingMode: 2
 --- !u!1 &550853149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,7 +985,7 @@ GameObject:
   - component: {fileID: 550853151}
   - component: {fileID: 550853150}
   m_Layer: 0
-  m_Name: Quad
+  m_Name: WorleyQuad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3073,9 +3035,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522282292}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.9, y: 42.4, z: 0}
-  m_LocalScale: {x: 50, y: 40.0744, z: 50}
+  m_LocalRotation: {x: -0, y: -0, z: -8.881784e-16, w: 1}
+  m_LocalPosition: {x: 4.9, y: 68.9, z: 0}
+  m_LocalScale: {x: 613.3849, y: 31.03325, z: 614.15625}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3104,8 +3066,8 @@ MonoBehaviour:
   textureResolution: 128
   cellResolution: 32
   axisCellCount: 4
-  seed: 0
-  noiseTexture: {fileID: 480500157}
+  seed: 4
+  noiseTexture: {fileID: 2045607274}
   quadMeshRenderer: {fileID: 550853151}
 --- !u!1 &1609815214
 GameObject:
@@ -3714,3 +3676,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2015869057}
   m_CullTransparentMesh: 1
+--- !u!84 &2045607274
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: _NoiseMap
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 128
+  m_Height: 128
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 0
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 0
+    m_WrapV: 0
+    m_WrapW: 0
+  m_Dimension: 3
+  m_VolumeDepth: 128
+  m_ShadowSamplingMode: 2
