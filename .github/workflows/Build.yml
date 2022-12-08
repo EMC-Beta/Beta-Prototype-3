@@ -25,13 +25,13 @@ jobs:
     steps:
       # Checkout
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: build
           lfs: true
           
       - name: Checkout web repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: Website
           repository: EMC-Beta/Beta-dev-web-app
@@ -41,7 +41,7 @@ jobs:
       # Cache
       - uses: actions/cache@v2
         with:
-          path: Library
+          path: build/Library
           key: Library-build-WebGL
           restore-keys: |
             library-build
