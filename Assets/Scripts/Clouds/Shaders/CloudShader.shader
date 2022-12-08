@@ -16,6 +16,7 @@ Shader "Hidden/CloudShader"
             #pragma fragment frag
 
             #include "UnityCG.cginc"
+            #include "UnityLightingCommon.cginc"
 
             struct VertData
             {
@@ -62,6 +63,12 @@ Shader "Hidden/CloudShader"
             float DensityMultiplier;    //Increases density of clouds
             int NumSteps;
 
+            float lightAbsorptionTowardSun;
+            float cloudLightAbsorption;
+            float phaseVal;
+
+            float4 cloudCol;   //Color of cloud
+
             float sampleDensity(float3 position)
             {
                 float3 uvw = float3(position.x * CloudScale.x, position.y * CloudScale.y, position.z * CloudScale.z) * 0.001 + CloudOffset * 0.01;
@@ -83,6 +90,25 @@ Shader "Hidden/CloudShader"
                 float distToBox = max(0, distA);
                 float distInsideBox = max(0, distB - distToBox);
                 return float2(distToBox, distInsideBox);
+            }
+
+            //Returns light transmittance, amount of light that makes it through the cloud, by marching through the box and summing the samples
+            float3 lightMarch(float3 position)
+            {
+                float3 lightDir = _WorldSpaceLightPos0.xyz; //Get position of light, that is our direction
+                float distInsideBox = rayBoxDist(BoundsMin, BoundsMax, position, 1/lightDir).y; //Raycast distance inside the cloud container
+
+                float stepSize = distInsideBox / NumSteps;  //Calculate step size
+                float totalDensity = 0;
+
+                for(int step = 0; step < NumSteps; step++)
+                {
+                    position += lightDir * stepSize;
+                    totalDensity += max(0, sampleDensity(position) * stepSize); //Ensure value is at least 0, get density from noise and add to total
+                }
+
+                float transmittance = exp(-totalDensity * lightAbsorptionTowardSun);
+                return DensityThreshold + transmittance * (1-DensityThreshold);   //blends transmittance based on a threshold
             }
 
             float4 frag(FragData input) : SV_Target
@@ -109,22 +135,40 @@ Shader "Hidden/CloudShader"
                 float stepSize = distInsideBox / NumSteps;  //Find size of steps based on number of samples to take for density
                 float distLimit = min(depth - distToBox, distInsideBox);    //The furthest our distance can be
 
-                float totalDensity = 0;
+                //March through volume (step through cloud container in increments)
+                float transmittance = 1;   //As cloud density increases, light makes it through exponentially less
+                float light = 0; 
+
                 while(distTravelled < distLimit)
                 {
-                    float3 rayPos = rayOrigin + rayDir * (distToBox + distTravelled);   //position of ray is at the point we look at on the box + step distance
-                    totalDensity += sampleDensity(rayPos) * stepSize;
+                    float3 rayPos = rayOrigin + rayDir * distTravelled;   //position of ray is at the point we look at on the box + step distance
+                    float density = sampleDensity(rayPos);
+
+                    if(density > 0)
+                    {
+                        float lightTransmittance = lightMarch(rayPos);  //Calculate light transmittance through cloud
+                        light += density * stepSize * transmittance * lightTransmittance * phaseVal;
+                        transmittance *= exp(-density * stepSize * cloudLightAbsorption);
+
+                        //Break out early if transmittance is almost 0
+                        if(transmittance < 0.01)
+                        {
+                            break;
+                        }
+                    }
+                    
+                    //Increment to next step
                     distTravelled += stepSize;
                 }
 
-                float transmittance = exp(-totalDensity);   //As cloud density increases, light makes it through exponentially less
+                   
 
-                if(transmittance < 1)
-                {
-                    float increase = lerp(.4f, 0, transmittance);
-                    col.a = .5f;
-                    return col * transmittance + float4(increase, increase, increase, 0);
-                }
+                //if(transmittance < 1)
+                //{
+                //    float increase = lerp(.4f, 0, transmittance);
+                //    col.a = .5f;
+                //    return col * transmittance + float4(increase, increase, increase, 0);
+                //}
 
                 //If distance to inside of box is more than 0 (point is not behind or right on top of us) and distance to box less than depth of objects (box point is not behind an object)
                 //bool rayHitBox = distInsideBox > 0 && distToBox < depth;
@@ -133,9 +177,10 @@ Shader "Hidden/CloudShader"
                 //    col = 0;
                 //}
 
+                float3 clodCol = light * _LightColor0;    //Color of Unity's light * factor of amount of energy light has
+                col = col * transmittance + cloudCol;
 
-
-                return col * transmittance;
+                return col;
             }
             ENDCG
         }

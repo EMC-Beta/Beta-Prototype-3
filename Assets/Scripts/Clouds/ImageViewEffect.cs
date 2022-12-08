@@ -10,13 +10,19 @@ public class ImageViewEffect : MonoBehaviour
     Material material;
 
     [SerializeField] Vector3 CloudOffset; //Allows for scrolling of clouds
+    [SerializeField] float scrollSpeed = 0;
     [SerializeField] float CloudScaleMultiplier = 70f;    //multiplies CloudDeform
     [SerializeField] Vector3 CloudDeform = new Vector3(2, 1, 1);   //Changes size of clouds
     [SerializeField][Range(0, 1.0f)]float DensityThreshold = .5f; //Controls how high the noise has to be to draw a cloud, if too low, space will be empty
     [SerializeField] float DensityMultiplier = 5;    //Increases density of clouds
     [SerializeField] int NumSteps = 100;
 
-    [SerializeField] float scrollSpeed = 0;
+    [SerializeField] float lightAbsorptionTowardSun = 1;
+    [SerializeField] float cloudLightAbsorption = 1;
+    [SerializeField] float phaseVal = 1;
+    [SerializeField] Vector3 cloudColor = new Vector3(50, 50, 50);
+
+
 
     [ImageEffectOpaque]
     //When image is rendered to screen, we change it with this function, the screen is just a render texture
@@ -54,6 +60,12 @@ public class ImageViewEffect : MonoBehaviour
         material.SetVector("CloudOffset", CloudOffset);
         material.SetFloat("DensityMultiplier", DensityMultiplier);
         material.SetFloat("DensityThreshold", DensityThreshold);
+
+        material.SetFloat("lightAbsorptionTowardSun", lightAbsorptionTowardSun);
+        material.SetFloat("cloudLightAbsorption", cloudLightAbsorption);
+        material.SetFloat("phaseVal", phaseVal);
+
+        material.SetVector("cloudColor", cloudColor);
 
         CloudOffset = new Vector3(CloudOffset.x + scrollSpeed * Time.deltaTime, 0, CloudOffset.z + scrollSpeed * Time.deltaTime);
 
