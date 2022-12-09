@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CruiseStep
   m_EditorClassIdentifier: 
   audio: {fileID: 0}
-  pictograph: {fileID: 0}
+  pictograph: {fileID: 21300000, guid: 562a4c7a91d92fc43b0ca9508cdbcd78, type: 3}
   showAudio: 1
   showProgress: 0
   localeKey: Cruise
